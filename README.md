@@ -79,14 +79,14 @@ Every component has to be declared inside a module. After that, it will be avail
 
 ```js
 const component = {
-    bindings: {},
-    template,
-    controller: ChangePasswordController,
+  bindings: {},
+  template,
+  controller: ChangePasswordController,
 };
 
 const module = angular
-    .module('app.changePassword', [])
-    .component('changePassword', component);
+  .module('app.changePassword', [])
+  .component('changePassword', component);
 ```
 
 :arrow_right: https://docs.angularjs.org/guide/component
@@ -182,7 +182,7 @@ Vue.component('change-password', {
   template: '<div>{{ /* template */ }}</div>',
   data() {
     return {
-        password: ''
+      password: ''
     };
   },
   methods: {
@@ -604,10 +604,10 @@ import React from 'react';
 class SettingsComponent extends React.Component {
   constructor() {
     this.state = {
-        user: {
-          name: 'Foo Bar',
-          email: 'foobar@example.com'
-        }
+      user: {
+        name: 'Foo Bar',
+        email: 'foobar@example.com'
+      }
     };
   }
   editedUser(user: User){
@@ -637,23 +637,23 @@ There's no built-in mechanism for default inputs, because of this we assign them
 
 ```js
 class CoursesListController {
-    $onChanges(bindings) {
-        if (typeof bindings.displayPurchased.currentValue === 'undefined') {
-            this.displayPurchased = true;
-        }
-        if (typeof bindings.displayAvailable.currentValue === 'undefined') {
-            this.displayAvailable = true;
-        }
+  $onChanges(bindings) {
+    if (typeof bindings.displayPurchased.currentValue === 'undefined') {
+      this.displayPurchased = true;
+     
+    if (typeof bindings.displayAvailable.currentValue === 'undefined') {
+      this.displayAvailable = true;
     }
+  }
 }
 
 const component = {
-    bindings: {
-        displayPurchased: '<',
-        displayAvailable: '<',
-    },
-    templateUrl: './coursesList.component.html',
-    controller: CoursesListController,
+  bindings: {
+    displayPurchased: '<',
+    displayAvailable: '<',
+  },
+  templateUrl: './coursesList.component.html',
+  controller: CoursesListController,
 };
 ```
 
@@ -663,8 +663,8 @@ const component = {
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'courses-list',
-    templateUrl: './coursesList.component.html',
+  selector: 'courses-list',
+  templateUrl: './coursesList.component.html',
 })
 export class CoursesListController {
   displayPurchased: boolean = true;
@@ -676,19 +676,19 @@ export class CoursesListController {
 
 ```jsx
 class CoursesListController {
-    static propTypes = {
-        displayPurchased: PropTypes.bool,
-        displayAvailable: PropTypes.bool,
-    };
+  static propTypes = {
+    displayPurchased: PropTypes.bool,
+    displayAvailable: PropTypes.bool,
+  };
 
-    static defaultProps = {
-        displayPurchased: true,
-        displayAvailable: true,
-    };
+  static defaultProps = {
+    displayPurchased: true,
+    displayAvailable: true,
+  };
 
-    render() {
-        return <div>{ /* template */ }</div>;
-    }
+  render() {
+    return <div>{ /* template */ }</div>;
+  }
 }
 ```
 
@@ -700,17 +700,17 @@ class CoursesListController {
 import Vue from 'vue';
 
 Vue.component('courses-list', {
-    template: '<div>{{ /* template */ }}</div>',
-    props: {
-        displayPurchased: {
-            type: Boolean,
-            default: true
-        },
-        displayAvailable: {
-            type: Boolean,
-            default: true
-        }
+  template: '<div>{{ /* template */ }}</div>',
+  props: {
+    displayPurchased: {
+      type: Boolean,
+      default: true
+    },
+    displayAvailable: {
+      type: Boolean,
+      default: true
     }
+  }
 });
 ```
 
@@ -885,9 +885,9 @@ Angularjs 1.x has three ways to perform conditional rendering: `ng-if`, `ng-swit
  
 ```js
 export class RegistrationComponentCtrl {
-    this.registrationCompleted = false;
-    this.displaySpecialOffer = false;
-    this.displayStatus = 'Registered';
+  this.registrationCompleted = false;
+  this.displaySpecialOffer = false;
+  this.displayStatus = 'Registered';
 }
 ```
 ```html
@@ -902,10 +902,10 @@ export class RegistrationComponentCtrl {
 </div>
 
 <div ng-show="displaySpecialOffer">
-    <special-offer></special-offer>
+  <special-offer></special-offer>
 </div>  
 <div ng-hide="displaySpecialOffer">
-    <special-offer></special-offer>
+  <special-offer></special-offer>
 </div>  
 ```
 
@@ -1190,11 +1190,11 @@ Custom Filters:
 ```js
 angular.module('app', [])
 .filter('reverse', function() {
-    return (input = '', uppercase = false) => {
-        const out = input.split('').reverse().join('');
+  return (input = '', uppercase = false) => {
+    const out = input.split('').reverse().join('');
 
-        return uppercase ? out.toUpperCase() : out;
-    };
+    return uppercase ? out.toUpperCase() : out;
+  };
 });
 ```
 
@@ -1215,10 +1215,10 @@ import { DomSanitizer} from '@angular/platform-browser';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
-    constructor(public sanitizer: DomSanitizer) {}
-    transform(url) {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    }
+  constructor(public sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }
 ```
 
@@ -1239,9 +1239,9 @@ React doesn't provide any specific filtering mechanism. This can simply be achie
 
 ```jsx
 export function reverse(input = '', uppercase = false) {
-    const out = input.split('').reverse().join('');
+  const out = input.split('').reverse().join('');
 
-    return uppercase ? out.toUpperCase() : out;
+  return uppercase ? out.toUpperCase() : out;
 }
 ```
 
@@ -1251,9 +1251,9 @@ import { reverse } from 'utils'
 export class App extends Component {
   render() {
     return (
-        <div>
-            { reverse(this.props.input) }
-        </div>
+      <div>
+        { reverse(this.props.input) }
+      </div>
     );
   }
 }
@@ -1263,7 +1263,7 @@ Filter chaining can be achieved using function composition:
 
 ```jsx
 <div>
-    { truncate(reverse(this.props.input)) }
+  { truncate(reverse(this.props.input)) }
 </div>
 ```
 
@@ -1701,37 +1701,36 @@ In Angular, the [ngClass](https://angular.io/guide/ajs-quick-reference#ngclass) 
 
 ```js
 class SignInController {
-    constructor(Auth) {
-        'ngInject';
+  constructor(Auth) {
+    'ngInject';
 
-        this.Auth = Auth;
-    }
+    this.Auth = Auth;
+  }
 
-    $onInit() {
-        this.email = '';
-        this.password = '';
-    }
+  $onInit() {
+    this.email = '';
+    this.password = '';
+  }
 
-    submit() {
-        Auth.signIn(this.email, this.password);
-    }
+  submit() {
+    Auth.signIn(this.email, this.password);
+  }
 }
 
 ```
 
 ```html
 <form name="$ctrl.form">
-    <label>
-        Email:
-        <input type="text" ng-model="$ctrl.email" />
-    </label>
+  <label>
+    Email:
+    <input type="text" ng-model="$ctrl.email" />
+  </label>
 
-    <label>
-        E-mail:
-        <input type="email" ng-model="$ctrl.password" />
-    </label>
-
-    <input type="submit" ng-click="$ctrl.submit()" value="Save" />
+  <label>
+    E-mail:
+    <input type="email" ng-model="$ctrl.password" />
+  </label>
+  <input type="submit" ng-click="$ctrl.submit()" value="Save" />
 </form>
 ```
 
@@ -1754,22 +1753,22 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   selector: 'reactive-form',
   template: `
     <div>
-        <form [formGroup]="form" 
+      <form [formGroup]="form" 
               (ngSubmit)="onSubmit(form.value, form.valid)" 
               novalidate>
         <div>
-            <label>
-                Name:
-                <input type="text" formControlName="name">
-            </label>
+          <label>
+            Name:
+            <input type="text" formControlName="name">
+          </label>
         </div>
         <div>
-            <label>
-                Email:
-                <input type="email" formControlName="email">
-            </label>
+          <label>
+            Email:
+             <input type="email" formControlName="email">
+          </label>
         </div>
-        </form>
+      </form>
     </div>
   `
 })
@@ -1793,18 +1792,18 @@ import { Component } from '@angular/core';
   selector: 'template-driven-form',
   template: `
     <div>
-        <form (ngSubmit)="onSubmit()" #templateDrivenForm="ngForm" novalidate>
+      <form (ngSubmit)="onSubmit()" #templateDrivenForm="ngForm" novalidate>
         <div>
-            <label>
-                Name:
-                <input type="text" [(ngModel)]="model.name" required>
-            </label>
+          <label>
+            Name:
+            <input type="text" [(ngModel)]="model.name" required>
+          </label>
         </div>
         <div>
-            <label>
-                Email:
-                <input type="email" [(ngModel)]="model.email" required>
-            </label>
+          <label>
+            Email:
+            <input type="email" [(ngModel)]="model.email" required>
+          </label>
         </div>
         <button type="submit" [disabled]="!templateDrivenForm.form.valid">Submit</button>
         </form>
@@ -1883,16 +1882,16 @@ The [`ng-style`](https://docs.angularjs.org/api/ng/directive/ngStyle) directive 
 
 ```js
 class HeaderController {
-    constructor(ThemeProvider) {
-        'ngInject';
+  constructor(ThemeProvider) {
+    'ngInject';
 
-        this.ThemeProvider = ThemeProvider;
-        this.headerStyles = {};
-    }
+    this.ThemeProvider = ThemeProvider;
+    this.headerStyles = {};
+  }
 
-    $onInit() {
-        this.headerStyles.color = ThemeProvider.getTextPrimaryColor();
-    }
+  $onInit() {
+    this.headerStyles.color = ThemeProvider.getTextPrimaryColor();
+  }
 }
 ```
 
@@ -1916,13 +1915,13 @@ The [`ngStyle`](https://angular.io/api/common/NgStyle) directive allows you to s
   styles: [require('./header.scss')],
 })
 export class HeaderComponent {
-    headerStyles = {};
+  headerStyles = {};
 
-    constructor(private themeProvider: ThemeProvider) {}
+  constructor(private themeProvider: ThemeProvider) {}
 
-    ngOnInit() {
-        this.headerStyles.color = ThemeProvider.getTextPrimaryColor();
-    }
+  ngOnInit() {
+    this.headerStyles.color = ThemeProvider.getTextPrimaryColor();
+  }
 }
 ```
 
@@ -1953,23 +1952,23 @@ To dynamically apply styles you can directly pass an object to the [style](https
 
 ```jsx
 export class HeaderComponent {
-    state = {
-        color: null,
-    };
+  state = {
+    color: null,
+  };
 
-    componentDidMount() {
-        this.setState({
-            color: ThemeProvider.getTextPrimaryColor();
-        })
-    }
+  componentDidMount() {
+    this.setState({
+      color: ThemeProvider.getTextPrimaryColor();
+    })
+  }
 
-    render() {
-        return (
-            <h1 styles={ { color: this.state.color } }>
-                Welcome
-            </h1>
-        )
-    }
+  render() {
+    return (
+      <h1 styles={ { color: this.state.color } }>
+        Welcome
+      </h1>
+    )
+  }
 }
 ```
 
@@ -1981,10 +1980,10 @@ To bind styles dynamically you can use the [`v-bind:style`](https://vuejs.org/v2
 
 ```html
 <template>
-    <h1 class="Header"
-        v-bind:style="headerStyles">
-        Welcome
-    </h1>
+  <h1 class="Header"
+    v-bind:style="headerStyles">
+     Welcome
+  </h1>
 </template>
 
 <script>
@@ -1993,9 +1992,9 @@ const ThemeProvider = require('./utils/themeProvider');
 module.exports = {
   data() {
     return {
-        headerStyles: {
-            color: null,
-        }
+      headerStyles: {
+        color: null,
+      }
     };
   },
   created() {
